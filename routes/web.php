@@ -20,4 +20,13 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+//backend
+
+//home
+Route::get('home', 'BackHome@index');
