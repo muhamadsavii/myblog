@@ -30,3 +30,13 @@ Auth::routes();
 
 //home
 Route::get('home', 'BackHome@index');
+
+//Article
+Route::group(['namespace' => 'Backend'], function () {
+	Route::get('article', array('as' => 'backend-article-index', 'uses' => 'ArticlesController@index'));
+	Route::get('datatables_user', array('as' => 'datatables-data', 'uses' => 'ArticlesController@anyData'));
+});
+
+// Route::get('article', 'ArticlesController@index');
+// Route::get('datatables_user', array('as' => 'datatables-data', 'uses' => 'ArticlesController@anyData'));
+
