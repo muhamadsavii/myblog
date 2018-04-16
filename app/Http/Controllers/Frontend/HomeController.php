@@ -16,7 +16,7 @@ class HomeController extends BaseController
         // $memorials = $this->model->getFeaturedMemorials();
         // $setting = new GeneralSetting;
         // $banner = $setting->first();
-
+    	
         return view('frontend.home.index');
     }
 

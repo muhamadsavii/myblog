@@ -41,7 +41,7 @@ class BackHome extends Controller
                         'color' => 'success'
                 ]
         ];
-        return view('backend.home.index')->with($data);
+        return view('layout.backend.master.index')->with($data);
     }
 
 

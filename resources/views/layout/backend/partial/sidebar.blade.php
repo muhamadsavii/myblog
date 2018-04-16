@@ -31,8 +31,8 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><span>Link</span></a></li>
-            <li><a href="#"><span>Another Link</span></a></li>
+            <li class="active" id="btn_home"><a href="#"><span>Home</span></a></li>
+            <li id="btn_article"><a href="#"><span>Article</span></a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -44,3 +44,7 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+
+@section('scripts')
+    @include('layout.backend.partial.scripts.sidebar_script')
+@endsection

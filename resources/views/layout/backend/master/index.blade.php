@@ -29,7 +29,8 @@
                 </ol>
             </section>
             <section class="content">
-                @yield('content')
+                
+                @include('backend.home.index')
             </section>
             </section>
         </div>
@@ -39,12 +40,14 @@
     <script src="{{ asset ("/assets/backend/scripts/bootstrap.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/bower_components/admin-lte/dist/js/adminlte.min.js") }}" type="text/javascript"></script>
     <!-- jQuery -->
-    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- <script src="//code.jquery.com/jquery.js"></script> -->
     <!-- DataTables -->
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     <!-- App scripts -->
     @stack('scripts')
+    @yield('scripts')
+    <div id="script"></div>
     </body>
 </html>

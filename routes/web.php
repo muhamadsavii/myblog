@@ -27,15 +27,28 @@ Auth::routes();
 
 
 //backend
+//dashboard
 
 //home
-Route::get('home', 'BackHome@index');
+Route::get('dashboard', 'BackHome@index');
 
-//Article
 Route::group(['namespace' => 'Backend'], function () {
+	//home
+	Route::get('home', array('as' => 'backend-home-index', 'uses' => 'BackHomeController@index'));
+	
+	//Article
 	Route::get('article', array('as' => 'backend-article-index', 'uses' => 'ArticlesController@index'));
+	Route::get('article/create', array('as' => 'admin-create-article', 'uses' => 'ArticlesController@create'));
+
 	Route::get('datatables_user', array('as' => 'datatables-data', 'uses' => 'ArticlesController@anyData'));
 });
+
+
+
+// Route::group(['namespace' => 'layout'], function () {
+// 	dashboard
+// 	Route::get('dashboard', 'DashboardController@index');
+// });
 
 // Route::get('article', 'ArticlesController@index');
 // Route::get('datatables_user', array('as' => 'datatables-data', 'uses' => 'ArticlesController@anyData'));

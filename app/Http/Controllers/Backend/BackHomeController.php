@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 
 
-class ArticlesController extends BaseController
+class BackHomeController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,34 @@ class ArticlesController extends BaseController
      */
     public function index()
     {
-        return view('backend.article.index');
+        $data['tasks'] = [
+                [
+                        'name' => 'Design New Dashboard',
+                        'progress' => '87',
+                        'color' => 'danger'
+                ],
+                [
+                        'name' => 'Create Home Page',
+                        'progress' => '76',
+                        'color' => 'warning'
+                ],
+                [
+                        'name' => 'Some Other Task',
+                        'progress' => '32',
+                        'color' => 'success'
+                ],
+                [
+                        'name' => 'Start Building Website',
+                        'progress' => '56',
+                        'color' => 'info'
+                ],
+                [
+                        'name' => 'Develop an Awesome Algorithm',
+                        'progress' => '10',
+                        'color' => 'success'
+                ]
+        ];
+        return view('backend.home.index')->with($data);
     }
 
     /**
@@ -28,7 +55,7 @@ class ArticlesController extends BaseController
      */
     public function create()
     {
-        return view('backend.article.create');   
+        //
     }
 
     /**
@@ -85,11 +112,5 @@ class ArticlesController extends BaseController
     public function destroy($id)
     {
         //
-    }
-
-    public function anyData()
-    {
-        
-        return Datatables::of(User::query())->make(true);
     }
 }

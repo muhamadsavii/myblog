@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 
 
-class ArticlesController extends BaseController
+class DashboardController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,9 @@ class ArticlesController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.article.index');
+    {   
+
+        return view('backend.master.index');
     }
 
     /**
@@ -28,7 +29,7 @@ class ArticlesController extends BaseController
      */
     public function create()
     {
-        return view('backend.article.create');   
+        //
     }
 
     /**
