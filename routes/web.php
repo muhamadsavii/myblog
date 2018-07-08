@@ -13,9 +13,21 @@
 
 // Route::get('/', function () {
 //     return view('welcome');
+// })->name('welcome');
+
+
+Route::post('/submit', function(\Illuminate\Http\Request $request){
+	$content = $request['content'];
+	return view('output', ['content' => $content]);
+})->name('submit');
+// Route::get('/', function () {
+//     return view('welcome');
 // });
 Route::group(['namespace' => 'Frontend'], function () {
+	
 	Route::get('/', array('as' => 'frontend-home-index', 'uses' => 'HomeController@index'));
+	Route::get('/content_article/{id}', array('as' => 'frontend-content_article-index', 'uses' => 'Content_ArticleController@index'));
+	
 });
 
 Auth::routes();
@@ -39,8 +51,14 @@ Route::group(['namespace' => 'Backend'], function () {
 	//Article
 	Route::get('article', array('as' => 'backend-article-index', 'uses' => 'ArticlesController@index'));
 	Route::get('article/create', array('as' => 'admin-create-article', 'uses' => 'ArticlesController@create'));
+	Route::delete('article/delete/{id}', array('as' => 'admin-delete-article', 'uses' => 'ArticlesController@destroy'));
+	Route::get('article/edit/{id}', array('as' => 'admin-edit-article', 'uses' => 'ArticlesController@edit'));
+	Route::get('article/store', array('as' => 'admin-store-article', 'uses' => 'ArticlesController@store'));
+	Route::get('article/update/{id}', array('as' => 'admin-update-article', 'uses' => 'ArticlesController@update'));
+	Route::get('article/form_image/{id}', array('as' => 'admin-form-image-article', 'uses' => 'ArticlesController@form_image'));
 
 	Route::get('datatables_user', array('as' => 'datatables-data', 'uses' => 'ArticlesController@anyData'));
+
 });
 
 

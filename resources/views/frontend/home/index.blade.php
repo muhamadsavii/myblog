@@ -1,83 +1,105 @@
 
 @extends('layout.frontend.master.master')
 @section('content')
+	<style type="text/css">
+		
+
+		.cd-container-before::before{
+			display: none;
+		}
+
+		.display-none{
+			display: none;
+		}
+
+
+	</style>
 	<section id="cd-timeline" class="cd-container">
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<img src="{{ asset('assets/frontend/images/cd-icon-picture.svg') }}" alt="Picture">
-			</div> <!-- cd-timeline-img -->
+		@foreach($article as $article)
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-picture">
+					<img src="{{ asset('assets/frontend/images/'.$article->category) }}" alt="Picture">
+				</div> 
 
-			<div class="cd-timeline-content">
-				<h2>Title of section 1</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 14</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
+				<div class="cd-timeline-content">
+					<h2 class="title-center mycolor">{{ $article->title }}</h2>
+					@if($article->category == 'cd-icon-picture.svg')
+						<img class="center-blok margin-img" src="{{ asset('photos/photo-articles/'.$article->title_img) }}">
+					@else
+						<img class="center-blok margin-img" src="{!!asset($article->title_img)!!}">
+					@endif
+					<a href="javascript:void(0)" class="cd-read-more mybacground" data-id="{{ $article->id }}" >Read more</a>
+					<span class="cd-date">{{ date('d M Y', strtotime($article->created_at)) }}</span>
+				</div> 
+			</div>
+		@endforeach 
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="{{ asset('assets/frontend/images/cd-icon-movie.svg') }}" alt="Movie">
-			</div> <!-- cd-timeline-img -->
+		@include('frontend.home.scripts.index_script')
+	</section>
 
-			<div class="cd-timeline-content">
-				<h2>Title of section 2</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 18</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
+	<!-- sementara -->
+	
+	 <div class="product-gallery" style="display:none;">
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-picture">
-				<img src="{{ asset('assets/frontend/images/cd-icon-picture.svg') }}" alt="Picture">
-			</div> <!-- cd-timeline-img -->
+	 			
+				
+				  
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img1.jpg') }}" alt="img01">
+                    </a>
+                    <div data-desc="Image1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
+                    </div>
+                </div>
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img2.jpg') }}" alt="img02">
+                    </a>
+                    <div data-desc="Image2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry">
+                    </div>
+                </div>
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img3.jpg') }}" alt="img03">
+                    </a>
+                    <div data-desc="Image3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry">
+                    </div>
+                </div>
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img4.jpg') }}" alt="img04">
+                    </a>
+                    <div data-desc="Image4. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry">
+                    </div>
+                </div>
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img5.jpg') }}" alt="img05">
+                    </a>
+                    <div data-desc="Image5. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry">
+                    </div>
+                </div>
+                <div class="gallery-img">
+                    <a>
+                        <img src="{{ asset('assets/plugins/Facebook-Like-jQuery-Image-Gallery-Lightbox-Plugin-AM2-Simple-Slider/Images/img6.jpg') }}" alt="img06">
+                    </a>
+                    <div data-desc="Image6.  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry">
+                    </div>
+                </div>
+            </div>
+           
 
-			<div class="cd-timeline-content">
-				<h2>Title of section 3</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Jan 24</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
+     <script type="text/javascript">
+         $('.gallery-img').Am2_SimpleSlider();
+       </script>
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-location">
-				<img src="{{ asset('assets/frontend/images/cd-icon-location.svg') }}" alt="Location">
-			</div> <!-- cd-timeline-img -->
+	<!-- sementara -->
 
-			<div class="cd-timeline-content">
-				<h2>Title of section 4</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Feb 14</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-location">
-				<img src="{{ asset('assets/frontend/images/cd-icon-location.svg') }}" alt="Location">
-			</div> <!-- cd-timeline-img -->
 
-			<div class="cd-timeline-content">
-				<h2>Title of section 5</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
-				<a href="#0" class="cd-read-more">Read more</a>
-				<span class="cd-date">Feb 18</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
 
-		<div class="cd-timeline-block">
-			<div class="cd-timeline-img cd-movie">
-				<img src="{{ asset('assets/frontend/images/cd-icon-movie.svg') }}" alt="Movie">
-			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
-				<h2>Final Section</h2>
-				<p>This is the content of the last section</p>
-				<span class="cd-date">Feb 26</span>
-			</div> <!-- cd-timeline-content -->
-		</div> <!-- cd-timeline-block -->
-	</section> <!-- cd-timeline -->
+	<section class="cd-container article-content display-none">
+		
+	</section>
 
 @endsection

@@ -1,30 +1,70 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">Create New</h3>
-            </div>
-            <form>
-                <div class="box-body">
-                <div class="error"></div>
-                    <div class="form-group{{ Form::hasError('provinces') }} provinces">
-                        {!! Form::label('provinces', trans('general.provinces').'* :', ['class' => 'col-sm-2 control-label']) !!}
-                        <div class="col-sm-9">
-                            {!! Form::text('provinces', old('provinces'), array('id' => 'provinces', 'class' => 'form-control','data-option' => old('provinces'))) !!}
-                        </div>
-                    </div>
-                    <div class="form-group{{ Form::hasError('name') }} name">
-                        {!! Form::label('name', trans('general.name').' '.trans('general.cities').'* :', ['class' => 'col-sm-2 control-label']) !!}
-                        <div class="col-sm-9">
-                            {!! Form::text('name', old('name'), ['class' => 'form-control','maxlength'=>'255']) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <a href="{{ route('admin-index-city') }}" class="btn btn-default">{{ trans('general.button_cancel') }}</a>
-                    <input class="btn btn-primary pull-right" title="{{ trans('general.button_save') }}" type="button" value="{{ trans('general.button_save') }}" id="button_submit">
-                </div>
-            </form>
-        </div>
+<style type="text/css">
+          .btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+  }
+
+  .img-upload{
+      width: 25%;
+  }
+</style>
+<div class="container-fluid">
+  <h2>Horizontal form</h2>
+  {!! Form::open(array("id"=>"article-create-form", "class" => "form-horizontal", "role" => "form", "files" => true, "enctype" => "multipart/form-data")) !!}
+  <!-- <form class="form-horizontal" id="article-create-form" action="{{ route('submit') }}" method="post"> -->
+    {{Form::hidden('id','',array('id'=>'id')) }}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Title:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" placeholder="Enter email" name="title">
+      </div>
     </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Kategori:</label>
+      <div class="col-sm-10">
+        {!! Form::select('category',
+          array(
+          'cd-icon-blog.png' => 'Blog',
+          'cd-icon-picture.svg' => 'Picture',
+          'cd-icon-tutorial.svg'  => 'Tutorial'
+          )
+        , 'cd-icon-blog.png', array('class' => 'form-control', 'id'=> 'category'))  !!} 
+      </div>
+    </div>
+
+    <div class="form-group" id="form-content">
+      <label class="control-label col-sm-2" for="pwd">Article:</label>
+      <div class="col-sm-10">          
+        <textarea class="form-control" name="description" id="input" rows="10"></textarea>
+           
+      </div>
+    
+    </div>
+
+    <div id="form-image" style="display: none;"></div>
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" id="save_article" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+     {{ csrf_field() }}
+  </form>
 </div>
+@include('backend.article.scripts.create_script')

@@ -82,6 +82,21 @@ header h1 {
   }
 }
 
+.title-center{
+    text-transform: capitalize !important;
+    text-align: center !important;
+  }
+
+  .center-blok{
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .margin-img{
+     margin-bottom: 7px;
+     margin-top: 3px;
+  }
+
 #cd-timeline {
   position: relative;
   padding: 2em 0;
@@ -481,4 +496,8 @@ header h1 {
     -o-transform: translateX(0);
     transform: translateX(0);
   }
+
+
+
+
 }

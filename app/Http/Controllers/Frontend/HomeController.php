@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,11 +16,8 @@ class HomeController extends BaseController
 
     public function index()
     {
-        // $memorials = $this->model->getFeaturedMemorials();
-        // $setting = new GeneralSetting;
-        // $banner = $setting->first();
-    	
-        return view('frontend.home.index');
+		$article = DB::table('articles')->get();
+        return view('frontend.home.index',['article'=>$article]);
     }
 
 }
