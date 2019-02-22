@@ -28,7 +28,7 @@
 					@else
 						<img class="center-blok margin-img" src="{!!asset($article->title_img)!!}">
 					@endif
-					<a href="javascript:void(0)" class="cd-read-more mybacground" data-id="{{ $article->id }}" >Read more</a>
+					<a href="javascript:void(0)" class="cd-read-more mybacground" data-categori="{{$article->category}}" data-id="{{ $article->id }}" >Read more</a>
 					<span class="cd-date">{{ date('d M Y', strtotime($article->created_at)) }}</span>
 				</div> 
 			</div>
@@ -39,7 +39,7 @@
 
 	<!-- sementara -->
 	
-	 <div class="product-gallery" style="display:none;">
+     <!-- <div class="product-gallery" style="display:none;">
 
 	 			
 				
@@ -91,7 +91,7 @@
 
      <script type="text/javascript">
          $('.gallery-img').Am2_SimpleSlider();
-       </script>
+       </script> -->
 
 	<!-- sementara -->
 

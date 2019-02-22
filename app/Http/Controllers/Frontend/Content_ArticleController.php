@@ -23,4 +23,17 @@ class Content_ArticleController extends BaseController
         return view('frontend.content_article.index',['article'=>$article]);
     }
 
+    public function image(Request $request)
+    {
+    	$id = $request->id;
+    	$article =  Article::find($id);
+        $articles = json_decode($article['description']);
+        $conten = array();
+        foreach ($articles as $key => $value) {
+            $conten[$key] = $value;
+        }
+        
+        return view('frontend.content_article.image',['article'=>$conten]);
+    }
+
 }

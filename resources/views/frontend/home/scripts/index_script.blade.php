@@ -3,9 +3,16 @@
 		
 		$(document).on('click', '.cd-read-more', function(){
 			var id = $(this).attr('data-id');
+			var categori = $(this).attr('data-categori');
 			var base_url = {!! json_encode(url('/')) !!};
+			if(categori == 'cd-icon-picture.svg'){
+				var url = base_url +'/content_article_image/'+ id;
+			}else{
+				var url = base_url +'/content_article/'+ id;
+			}
+
 			$.ajax({
-			    url: base_url +'/content_article/'+ id,
+			    url: url,
 			    type: "GET",
 			    async:true,
 			    processData: true,

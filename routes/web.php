@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 	
 	Route::get('/', array('as' => 'frontend-home-index', 'uses' => 'HomeController@index'));
 	Route::get('/content_article/{id}', array('as' => 'frontend-content_article-index', 'uses' => 'Content_ArticleController@index'));
+	Route::get('/content_article_image/{id}', array('as' => 'frontend-content_article-index-image', 'uses' => 'Content_ArticleController@image'));
 	
 });
 

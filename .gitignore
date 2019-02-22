@@ -10,3 +10,11 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+tutorial blog/
+.gitignore
+resources/views/frontend/content_article/*
+.gitignore
+routes/.web.php.swp
+routes/.web.php.swp
+
+
