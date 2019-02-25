@@ -1,10 +1,25 @@
 <script type="text/javascript">
+	var base_url = {!! json_encode(url('/')) !!};
+
 	$( document ).ready(function(e) {
+		$.ajax({
+		    url: base_url +'/content_article_all',
+		    type: "GET",
+		    async:true,
+		    processData: true,
+		    complete:function() {
+		    },
+		    success: function (data) {
+		    	$('#cd-timeline').html(data);
+		    },
+		    error: function(response) {
+		    }
+		});		
 		
 		$(document).on('click', '.cd-read-more', function(){
 			var id = $(this).attr('data-id');
 			var categori = $(this).attr('data-categori');
-			var base_url = {!! json_encode(url('/')) !!};
+			
 			if(categori == 'cd-icon-picture.svg'){
 				var url = base_url +'/content_article_image/'+ id;
 			}else{

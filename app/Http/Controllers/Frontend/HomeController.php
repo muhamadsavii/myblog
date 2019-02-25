@@ -14,10 +14,32 @@ class HomeController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
-		$article = DB::table('articles')->get();
-        return view('frontend.home.index',['article'=>$article]);
+        return view('frontend.home.index');
+    }
+
+
+    public function content(Request $request)
+    {
+    	$data = $request->all();
+    	$cat='';
+    	if(isset($data['id'])){
+	    	if($data['id']=='blog'){
+	    		$cat = 'cd-icon-blog.png';
+	    	}else if($data['id']=='tutorial'){
+	    		$cat = 'cd-icon-tutorial.svg';
+	    	}else if($data['id']=='galeri'){
+	    		$cat = 'cd-icon-picture.svg';
+	    	}
+    	}
+
+		$article = DB::table('articles');
+		if($cat!=''){
+			$article->where('category',$cat);
+		}
+		$article = $article->get();
+        return view('frontend.home.content',['article'=>$article]);
     }
 
 }
